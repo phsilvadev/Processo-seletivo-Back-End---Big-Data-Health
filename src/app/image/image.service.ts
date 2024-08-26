@@ -2,7 +2,6 @@ import {
   Injectable,
   InternalServerErrorException,
   NotFoundException,
-  Request,
 } from '@nestjs/common';
 import { CloudinaryConfig } from '../cloudinary/cloudinary.config';
 import { UserService } from '../user/user.service';
@@ -23,20 +22,23 @@ export class ImageService {
   async uploadImage(
     file: Express.Multer.File,
     userReq: { sub: number },
-  ): Promise<Cloudinary | unknown> {
+  ): Promise<Cloudinary> {
     const cloudinary = this.cloudinaryConfig.getCloudinaryInstance();
-    const res = await new Promise((resolve, reject) => {
+
+    // Upload image to Cloudinary
+    const uploadResult = await new Promise<Cloudinary>((resolve, reject) => {
       cloudinary.uploader
         .upload_stream((error, result) => {
           if (error) return reject(error);
-          resolve(result);
+          resolve(result as unknown as Cloudinary);
         })
         .end(file.buffer);
     });
 
-    try {
-      const response = res as Cloudinary;
+    const response = uploadResult;
 
+    // Handle successful Cloudinary upload
+    try {
       const user = await this.userService.findOneById(userReq.sub);
 
       const upload: Image = {
@@ -45,11 +47,23 @@ export class ImageService {
         userId: userReq.sub,
       };
 
+      // Save image information to database
       await this.imageRepository.save(upload);
 
-      return res;
+      return response;
     } catch (error) {
-      throw new InternalServerErrorException();
+      // If database save fails, clean up Cloudinary image
+      const cloudinaryId = response.public_id;
+      await new Promise((resolve, reject) => {
+        cloudinary.uploader.destroy(cloudinaryId, (err) => {
+          if (err) return reject(err);
+          resolve(true);
+        });
+      });
+
+      throw new InternalServerErrorException(
+        'Failed to save image details to database.',
+      );
     }
   }
 
