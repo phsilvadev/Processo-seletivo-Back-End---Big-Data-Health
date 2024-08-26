@@ -78,7 +78,7 @@ cd seu-repositorio
 
    ```bash
    SECRET=
-
+    # O valor de DATABASE_HOST deve corresponder ao nome do serviço definido no docker-compose.yml
    DATABASE_HOST=db
    DATABASE_PORT=5432
    DATABASE_USER=seu_usuario
@@ -92,6 +92,8 @@ cd seu-repositorio
    PORT=3000
 
    ```
+
+   **Observação:** Certifique-se de que o valor de DATABASE_HOST corresponde exatamente ao nome do serviço de banco de dados definido no seu arquivo docker-compose.yml. Por exemplo, se no docker-compose.yml o serviço do PostgreSQL é definido como db, o valor de DATABASE_HOST deve ser db.
 
 3. Gerando um secret
 
