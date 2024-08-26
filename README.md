@@ -31,7 +31,7 @@ Para instalar o Node.js, siga as instruções para o seu sistema operacional:
 
 ### Windows e macOS
 
-1. Acesse o site oficial do Node.js e baixe o instalador apropriado para seu sistema operacional.
+1. Acesse o [site oficial do Node.js](https://nodejs.org/pt) e baixe o instalador apropriado para seu sistema operacional.
 
 2. Execute o instalador e siga as instruções para concluir a instalação.
 
