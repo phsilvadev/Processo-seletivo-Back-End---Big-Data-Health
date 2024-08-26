@@ -93,12 +93,29 @@ cd seu-repositorio
 
    ```
 
-   Não esquecer de colocar seu SECRET
+3. Gerando um secret
 
-   - Execute esse comando no seu terminal para gerar secret
+   Execute esse comando no seu terminal para gerar secret e coloque na variel com o mesmo dentro do .env
 
    ```bash
    node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+   ```
+
+4. Configure o docker-compose.yml:
+
+   Certifique-se de que o docker-compose.yml está configurado com as mesmas informação variáveis de ambiente.
+
+   ```bash
+   ...
+
+    environment:
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: password
+    POSTGRES_DB: mydb
+    ports:
+    - '5498:5432'
+    ...
+
    ```
 
 ### 4. Configuração com Docker
