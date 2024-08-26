@@ -120,17 +120,32 @@ cd seu-repositorio
 
 ### 4. Configuração com Docker
 
-A aplicação utiliza Docker e Docker Compose para rodar os serviços, incluindo o Node.js e o PostgreSQL.
+A aplicação utiliza Docker e Docker Compose para rodar os serviços, incluindo o Node.js e o PostgreSQL. Siga as instruções abaixo para configurar e iniciar os containers.
 
-1.  Inicie o Docker Compose:
+1.  Instalar Docker e Docker Compose
 
-    Execute o comando para construir e iniciar os containers:
+    - Acesse o [site do Docker](https://docs.docker.com/get-started/get-docker/) e baixe o mesmo conforme o seu sistema operacional
+    - Siga as instruções de instalação fornecidas no site.
 
-        docker-compose up --build
+2.  Iniciar o Docker Compose
 
-2.  Verifique os containers em execução:
+    - Navegue até o diretório do projeto onde está localizado o arquivo docker-compose.yml e execute o comando:
 
-    Depois que os containers estiverem em execução, a aplicação estará disponível em http://localhost:3000.
+    ```bash
+    docker-compose up --build
+    ```
+
+    - Este comando irá construir as imagens e iniciar os containers definidos no arquivo docker-compose.yml.
+
+3.  Verificar os Containers em Execução
+
+    - Após a execução do Docker Compose, você pode verificar os containers em execução com:
+
+    ```bash
+    docker ps
+    ```
+
+    - A aplicação estará disponível em http://localhost:3000.
 
 ### 5. Acessando a Documentação da API (Swagger)
 
