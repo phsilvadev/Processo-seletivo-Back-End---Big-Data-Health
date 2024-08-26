@@ -5,12 +5,12 @@
 - [Visão Geral](#visão-geral)
 - [Requisitos](#requisitos)
 - [Configuração do Ambiente](#configuração-do-ambiente)
-  - [1. Instalação do Node.js](#1-clone-o-repositório)
-  - [2. Clone o Repositório](#1-clone-o-repositório)
-  - [3. Configuração do Cloudinary](#2-configuração-do-cloudinary)
-  - [4. Configuração com Docker](#3-configuração-com-docker)
-  - [5. Acessando a Documentação da API (Swagger)](#5-acessando-a-documentação-da-api-swagger)
-  - [6. Parar e Reiniciar os Containers](#6-parar-e-reiniciar-os-containers)
+  - [1. Instalação do Node.js](#instalação-do-nodejs)
+  - [2. Clone o Repositório](#clone-o-repositório)
+  - [3. Configuração do Cloudinary](#configuração-do-cloudinary)
+  - [4. Configuração com Docker](#configuração-com-docker)
+  - [5. Acessando a Documentação da API (Swagger)](#acessando-a-documentação-da-api-swagger)
+  - [6. Parar e Reiniciar os Containers](#parar-e-reiniciar-os-containers)
 - [Considerações Finais](#considerações-finais)
 
 ## Visão Geral
