@@ -7,11 +7,16 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
   const config = new DocumentBuilder()
-    .setTitle('Api Upload')
+    .setTitle('API de Upload de Imagens')
     .setDescription(
-      'Aplicação que tem com objetivo de enviar as imagens para um serviço de nuuvem',
+      'Esta API permite o upload de imagens para um serviço de armazenamento em nuvem, facilitando o gerenciamento e a manipulação das imagens.',
     )
-    .addBearerAuth() // Adiciona suporte ao Bearer token
+    .addBearerAuth({
+      description: 'Bearer token para autenticação',
+      type: 'http',
+      scheme: 'bearer',
+      bearerFormat: 'JWT',
+    })
     .setVersion('1.0')
     .build();
 
