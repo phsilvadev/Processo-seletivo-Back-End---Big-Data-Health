@@ -110,13 +110,18 @@ cd seu-repositorio
    ```bash
    ...
 
-    environment:
-    POSTGRES_USER: postgres
-    POSTGRES_PASSWORD: password
-    POSTGRES_DB: mydb
-    ports:
-    - '5498:5432'
+    version: '3.9'
+    services:
+    db:
+      image: postgres
+      environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+      ports:
+       - '5498:5432'
     ...
+
 
    ```
 
